@@ -7,7 +7,7 @@ from .serializers import ReminderSerializer, UserSerializer
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate
-
+from rest_framework.generics import ListAPIView
 
 class RegisterUserAPIView(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -53,3 +53,10 @@ class ReminderAPIView(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ReminderListView(ListAPIView):
+    serializer_class = ReminderSerializer
+    permission_classes = [IsAuthenticated]
+    def get_queryset(self):
+        user = self.request.user
+        return Reminder.objects.filter(user=user)
