@@ -64,7 +64,7 @@ Remind-me-later is a simple web application that allows users to set up reminder
 
 ## Contributors
 
-- Your Name (@SaurabhVishwakarma826)
+- Saurabh Vishwakarma @SaurabhVishwakarma826
 
 ## License
 
