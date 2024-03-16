@@ -8,6 +8,7 @@ from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 from django.contrib.auth import authenticate
 from rest_framework.generics import ListAPIView
+from .models import Reminder
 
 class RegisterUserAPIView(generics.CreateAPIView):
     queryset = User.objects.all()
