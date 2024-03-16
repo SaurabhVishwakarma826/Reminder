@@ -3,9 +3,10 @@ from .models import Reminder
 from django.contrib.auth.models import User
 
 class UserSerializer(serializers.ModelSerializer):
+    name = serializers.CharField(source='first_name', required=True)
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'password']
+        fields = ['id', 'name', 'email','username', 'password']
         extra_kwargs = {'password': {'write_only': True}}
 
     def create(self, validated_data):
